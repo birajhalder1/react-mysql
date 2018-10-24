@@ -1,0 +1,74 @@
+<% include ../partials/header %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 style="text-align:center"><%= pageTitle %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+          <form action="/payment_details" method="post">
+
+            <div class="form-group">
+              <select name="reciever" id="reciever" class="form-control">
+                <option value="select type">Select Store</option>
+                <% stores.forEach(function(store) { %>
+                <option value="<%= store.stokist_title +" "+ store.stokist_location %>"><%= store.stokist_title +" - "+ store.stokist_location  %></option>
+                <% }); %>
+              </select>
+            </div>
+            <div class="form-group">
+              <select name="recieved_for" id="reciever" class="form-control">
+                <option value="select type">Select Product</option>
+                <% products.forEach(function(product) { %>
+                <option value="<%= product.product_title %>"><%= product.product_title %></option>
+                <% }); %>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="date" name="recieved_on" value="" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <input type="number" name="recieved_amount" value="" placeholder="Enter Amount" class="form-control"/>
+            </div>
+              <input type="submit" name="save" value="Save" class="btn btn-success">
+              <input type="reset" name="reset" value="Reset" class="btn btn-danger">
+          </form>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12"><h1 style="text-align:center">Payments Informations</h1></div>
+  </div>
+  <div class="row" style="min-height:500px">
+    <div class="col-sm-12">
+      <table class="table whiteBG">
+        <thead>
+          <tr>
+            <th class="id">Payment Id</th>
+            <th class="name">Product Title</th>
+            <th class="location">Stockist Name</th>
+            <th class="startDate">Recieved On</th>
+            <th class="endDate">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% payments.forEach(function(item) { %>
+                <tr>
+                  <td><strong><%= item.payment_id %></strong></td>
+                  <td><%= item.payment_recieved_for %></td>
+                  <td><%= item.payment_recieved_from %></td>
+                  <td><%= item.payment_recieved_on %></td>
+                  <td><%= item.payment_recieved_amount %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer %>

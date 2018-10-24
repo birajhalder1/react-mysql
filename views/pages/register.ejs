@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 style="text-align:center"><%= pageTitle %></h1>
+    </div>
+  </div>
+  
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form action="/register" method="post">
+        <div class="form-group">
+          <input type="text" name="name" value="" placeholder="Enter Name" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" value="" placeholder="Enter email" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" value="" placeholder="Enter password" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password2" value="" placeholder="Confirm password" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <select name="usertype" id="user" class="form-control">
+            <option value="select type">Select a type</option>
+            <% users.forEach(function(user) { %>
+            <option value="<%= user.user_type %>"><%= user.user_type %></option>
+            <% }); %>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="education" id="education" class="form-control">
+            <option value="">Select Education</option>
+            <option value="postgraduation">Post Graduation</option>
+            <option value="graduation">Graduation</option>
+            <option value="diploma">Diploma</option>
+            <option value="highersecondary">12th</option>
+            <option value="secondary">10th</option>
+            <option value="eightpass">8th</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" name="aadhar" value="" class="form-control" placeholder="Enter Aadhar number">
+        </div>
+        <input type="submit" name="register" value="Register" class="btn btn-success">
+        <input type="reset" name="erset" value="Reset" class="btn btn-danger">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer %>
